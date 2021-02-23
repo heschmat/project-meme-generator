@@ -2,14 +2,14 @@ import os
 import random
 import argparse
 
-# @TODO Import your Ingestor and MemeEngine classes
 from MemeEngine import MemeEngine
 from QuoteEngine import Ingestor, QuoteModel
 
+
 def generate_meme(path=None, body=None, author=None):
     """ Generate a meme given a path and a quote """
-    img = None
-    quote = None
+    # img = None
+    # quote = None
 
     if path is None:
         images = "./_data/photos/dog/"

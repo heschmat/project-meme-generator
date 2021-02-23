@@ -17,7 +17,7 @@ class MemeEngine:
     """
     def __init__(self, output_dir):
         self.out_dir = output_dir
-        self.out_path = os.path.join(self.out_dir, f'tmp-{int(time())}.png')
+        # self.out_path = os.path.join(self.out_dir, f'tmp-{time()}.png')
 
         if not os.path.exists(self.out_dir):
             os.makedirs(self.out_dir)
@@ -31,9 +31,10 @@ class MemeEngine:
 
         # Put the text on top:
         draw = ImageDraw.Draw(img)
-        font = ImageFont.truetype('./_data/FONTS/LilitaOne-Regular.ttf', size = 20)
+        font = ImageFont.truetype('./_data/FONTS/LilitaOne-Regular.ttf', size = 30)
         draw.text((10, 30), f'{text}\n- {author}', font = font, fill = 'white')
 
-        img.save(self.out_path)
-        print(f'[Info] Image Saved to {self.out_path}.')
-        return self.out_path
+        out_path  = os.path.join(self.out_dir, f'tmp-{time()}.png')
+        img.save(out_path)
+        print(f'[Info] Image Saved to {out_path}.')
+        return out_path
