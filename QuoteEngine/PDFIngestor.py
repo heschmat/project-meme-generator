@@ -7,8 +7,6 @@ from time import time
 from .IngestorInterface import IngestorInterface
 from .QuoteModel import QuoteModel
 
-# sudo apt-get update
-# sudo apt-get install -y xpdf
 
 class PDFIngestor(IngestorInterface):
     available_formats = ['pdf']

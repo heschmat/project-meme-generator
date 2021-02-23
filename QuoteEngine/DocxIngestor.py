@@ -1,9 +1,6 @@
 from typing import List
 import docx
 
-# conda install -c anaconda setuptools
-# conda install -c conda-forge python-docx
-
 from .IngestorInterface import IngestorInterface
 from .QuoteModel import QuoteModel
 
