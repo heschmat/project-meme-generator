@@ -13,7 +13,7 @@ class DocxIngestor(IngestorInterface):
     def parse(cls, path: str) -> List[QuoteModel]:
         """Parse ms word documents."""
         if not cls.can_ingest(path):
-            raise Exception('Cannot ingest exception!')
+            raise Exception('Expected DOCX format. Please check the file.')
 
         quotes = []
         doc = docx.Document(path)

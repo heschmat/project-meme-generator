@@ -1,3 +1,4 @@
+"""This module is responsible for packaging the app in the CLI."""
 import os
 import random
 import argparse
@@ -7,10 +8,7 @@ from QuoteEngine import Ingestor, QuoteModel
 
 
 def generate_meme(path=None, body=None, author=None):
-    """ Generate a meme given a path and a quote """
-    # img = None
-    # quote = None
-
+    """Generate a meme given a path and a quote."""
     if path is None:
         images = "./_data/photos/dog/"
         imgs = []
@@ -43,8 +41,11 @@ def generate_meme(path=None, body=None, author=None):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description= 'Generate Meme.')
-    parser.add_argument('--path', type= str, help= 'The path to the image file.')
-    parser.add_argument('--body', type= str, help= 'The text/quote to put on image.')
-    parser.add_argument('--author', type= str, help= 'The author of the quote.')
+    parser.add_argument('--path', type= str,
+                        help='The path to the image file.')
+    parser.add_argument('--body', type= str,
+                        help='The text/quote to put on image.')
+    parser.add_argument('--author', type= str,
+                        help='The author of the quote.')
     args = parser.parse_args()
     print(generate_meme(args.path, args.body, args.author))

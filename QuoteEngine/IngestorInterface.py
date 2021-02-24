@@ -1,3 +1,4 @@
+"""Abstract Base Class for the Ingestors responsible for parsing files."""
 from abc import ABC, abstractmethod
 from typing import List
 
@@ -6,6 +7,7 @@ from .QuoteModel import QuoteModel
 
 class IngestorInterface(ABC):
     """Abstract Base Class for parsing external files."""
+    
     available_formats = []
 
     @classmethod

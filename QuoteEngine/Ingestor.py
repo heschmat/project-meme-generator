@@ -1,3 +1,4 @@
+"""Encapsulate sub-classes for ingseting various file formats."""
 from typing import List
 
 from .QuoteModel import QuoteModel
@@ -11,9 +12,11 @@ from .PDFIngestor import PDFIngestor
 class Ingestor(IngestorInterface):
     """
     Convert supported file formats to a list of `QuoteModel` objects.
+    
     Support is available for: ['docx', 'csv', 'txt', 'pdf']
     If file format is NOT supported, an empty list is returned.
     """
+    
     ingestors = [DocxIngestor, CSVIngestor, TXTIngestor, PDFIngestor]
     
     @classmethod
