@@ -26,8 +26,8 @@ class PDFIngestor(IngestorInterface):
                 line = line.strip('\n\r').strip()
                 if len(line) == 0:
                     continue
-                quote, author = line.split('- ')
-                quotes.append(QuoteModel(quote.strip('" '), author.strip()))
+                res = line.split('-')
+                quotes.append(QuoteModel(res[0].strip(), res[1].strip())
                 
         os.remove(path_tmp)
 
