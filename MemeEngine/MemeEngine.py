@@ -2,7 +2,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 import os
 from time import time
-from random import randint
+from random import randint, randrange
 
 
 class MemeEngine:
@@ -40,13 +40,16 @@ class MemeEngine:
         w, h = img.size
         width = min(500, width)
         r = width/w
-        img = img.resize((width, int(r * h)), Image.NEAREST)
+        height = int(r * h)
+        img = img.resize((width, height), Image.NEAREST)
 
         # Put the text on top:
         draw = ImageDraw.Draw(img)
-        font = ImageFont.truetype('./_data/FONTS/LilitaOne-Regular.ttf', size = 30)
-        draw.text((randint(10, w/4), randint(30, h/4)),
-                   f'{text}\n- {author}', font = font, fill = 'white')
+        font = ImageFont.truetype('./_data/FONTS/LilitaOne-Regular.ttf', size = 20)
+        # Put the quote on a 'random' place on the image:
+        row_text = randrange(30, height - 50)
+        draw.text((50, row_text), text, font = font, fill = 'white')
+        draw.text((50, row_text + 20), f'- {author}', font = font, fill = 'white')
 
         out_path  = os.path.join(self.out_dir, f'tmp-{time()}.png')
         img.save(out_path)
