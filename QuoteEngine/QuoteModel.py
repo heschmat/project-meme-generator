@@ -1,4 +1,5 @@
 class QuoteModel:
+    """Encapsulate the body/quote and author."""
     def __init__(self, quote, author):
         self.body = quote
         self.author = author

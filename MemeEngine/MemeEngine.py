@@ -2,6 +2,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 import os
 from time import time
+from random import randint
 
 
 class MemeEngine:
@@ -23,16 +24,29 @@ class MemeEngine:
             os.makedirs(self.out_dir)
 
     def make_meme(self, img_path, text, author, width = 500) -> str:
+        """
+        Load the file.
+        Transform image by resizing to a maximum width of 500px
+        while maintaining the input aspect ratio.
+        Add a caption to an image (string input)
+        with a body and author to a random location on the image.
+        Save the image/meme in `tmp` directory.
+
+        Returns:
+        The path to which the generated image is saved in.
+        """
         img = Image.open(img_path)
         # Resize the image:
         w, h = img.size
+        width = min(500, width)
         r = width/w
         img = img.resize((width, int(r * h)), Image.NEAREST)
 
         # Put the text on top:
         draw = ImageDraw.Draw(img)
         font = ImageFont.truetype('./_data/FONTS/LilitaOne-Regular.ttf', size = 30)
-        draw.text((10, 30), f'{text}\n- {author}', font = font, fill = 'white')
+        draw.text((randint(10, w/4), randint(30, h/4)),
+                   f'{text}\n- {author}', font = font, fill = 'white')
 
         out_path  = os.path.join(self.out_dir, f'tmp-{time()}.png')
         img.save(out_path)

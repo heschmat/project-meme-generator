@@ -5,10 +5,12 @@ from .QuoteModel import QuoteModel
 
 
 class TXTIngestor(IngestorInterface):
+    """Convert text file to a list of `QuoteModel` objects."""
     available_formats = ['txt']
 
     @classmethod
     def parse(cls, path: str) -> List[QuoteModel]:
+        """Parse txt file to a list of `QuoteModel` objects."""
         if not cls.can_ingest(path):
             raise Exception('Cannot ingest exception!')
 

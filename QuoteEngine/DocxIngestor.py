@@ -6,10 +6,12 @@ from .QuoteModel import QuoteModel
 
 
 class DocxIngestor(IngestorInterface):
+    """Convert ms word documents to a list of `QuoteModel` objects."""
     available_formats = ['docx']
 
     @classmethod
     def parse(cls, path: str) -> List[QuoteModel]:
+        """Parse ms word documents."""
         if not cls.can_ingest(path):
             raise Exception('Cannot ingest exception!')
 

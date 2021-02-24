@@ -6,10 +6,12 @@ from .IngestorInterface import IngestorInterface
 
 
 class CSVIngestor(IngestorInterface):
+    """Convert CSV files to a list of `QuoteModel` objects."""
     available_formats = ['csv']
     
     @classmethod
     def parse(cls, path: str) -> List[QuoteModel]:
+        """Parse CSV files."""
         if not cls.can_ingest(path):
             raise Exception('Cannot ingest exception!')
             
